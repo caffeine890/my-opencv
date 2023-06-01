@@ -4,15 +4,15 @@
 using namespace std;
 using namespace cv;
 
-string win_src = "src";
-string win_dst = "dst";
-string win_dst2 = "dst2";
-string win_dst3 = "dst3";
-string win_dst4 = "dst4";
-string win_dst5 = "dst5";
 
 int main() {
-    string file_src = "C:\\Users\\caffeine111\\Documents\\Falcon.jpg";//入力画像のファイルパス名の格納
+    string win_src = "src";
+    string win_dst = "dst";
+    string win_dst2 = "dst2";
+    string win_dst3 = "dst3";
+    string win_dst4 = "dst4";
+    string win_dst5 = "dst5";    
+    string file_src = "C:\\Users\\caffeine111\\Documents\\Falcon.jpg";
    
     Mat img_src = imread(file_src, 1);//入力画像の宣言と読み込み
 
