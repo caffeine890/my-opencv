@@ -23,10 +23,10 @@ int main() {
     }// 読み込みの確認
         
     // ここに核となる処理を記述する (例）flip(img_src, img_dst, 0); //垂直回転
-    blur(img_src, img_dst1, Size(3, 3));
-    blur(img_src, img_dst2, Size(5, 5));
-    blur(img_src, img_dst3, Size(7, 7));
-    blur(img_src, img_dst4, Size(9, 9));
+    GaussianBlur(img_src, img_dst1, Size(3,3), 1);
+    GaussianBlur(img_src, img_dst2, Size(3,3), 120);
+    GaussianBlur(img_src, img_dst3, Size(3,3), 15);
+    GaussianBlur(img_src, img_dst4, Size(3,3), 1);
 
     // ウィンドウの生成
     namedWindow(win_src, WINDOW_AUTOSIZE);
