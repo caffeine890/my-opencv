@@ -26,7 +26,7 @@ int main() {
     blur(img_src, img_dst1, Size(3, 3));
     blur(img_src, img_dst2, Size(5, 5));
     blur(img_src, img_dst3, Size(7, 7));
-    blur(img_src, img_dst4, Size(9, 9));
+    blur(img_src, img_dst4, Size(9, 9));//
 
     // ウィンドウの生成
     namedWindow(win_src, WINDOW_AUTOSIZE);
