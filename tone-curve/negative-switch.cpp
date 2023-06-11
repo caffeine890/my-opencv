@@ -59,7 +59,8 @@ int main() {
     //ウィンドウの生成
     namedWindow(win_src, WINDOW_AUTOSIZE);
     namedWindow(win_dst1, WINDOW_AUTOSIZE);
-
+    
+    //画像の表示
     imshow(win_src, img_src);
     imshow(win_dst1, img_dst1);
 
