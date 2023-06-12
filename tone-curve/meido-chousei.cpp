@@ -34,34 +34,43 @@ void drawHistogram(const Mat& image, const string& windowName) {
 }
 
 int main() {
+    //ウィンドウ名の宣言
     string win_src = "src";
     string win_dst1 = "dst1";
     string win_dst2 = "dst2";
     string win_dst3 = "dst3";
     string win_dst4 = "dst4";
-
+    
+    //入力画像のpathの格納
     string file_src = "C:\\Users\\caffeine111\\Documents\\Falcon.jpg";
-    string file_dst = "C:\\Users\\caffeine111\\Documents\\Falconikichi2.jpg";
-
+    //string file_dst = "C:\\Users\\caffeine111\\Documents\\Falconikichi2.jpg";
+    
+    //入力画像オブジェクトの宣言と読み込み
     Mat img_src = imread(file_src, 0);
-    Mat img_dst1, img_dst2, img_dst3, img_dst4;
 
+    //出力画像オブジェクトの宣言
+    Mat img_dst1, img_dst2, img_dst3, img_dst4;
+    
+    //入力画像の読み込みの確認
     if (!img_src.data) {
         cout << "error" << endl;
         return -1;
     }
-
+    
+    //明度調整の処理
     img_src.convertTo(img_dst1, img_src.type(), 1, 100);
     img_src.convertTo(img_dst2, img_src.type(), 1, 50);
     img_src.convertTo(img_dst3, img_src.type(), 1, -50);
     img_src.convertTo(img_dst4, img_src.type(), 1, -100);
-
+    
+    //ウィンドウの生成
     namedWindow(win_src, WINDOW_AUTOSIZE);
     namedWindow(win_dst1, WINDOW_AUTOSIZE);
     namedWindow(win_dst2, WINDOW_AUTOSIZE);
     namedWindow(win_dst3, WINDOW_AUTOSIZE);
     namedWindow(win_dst4, WINDOW_AUTOSIZE);
-
+    
+    //画像の表示
     imshow(win_src, img_src);
     imshow(win_dst1, img_dst1);
     imshow(win_dst2, img_dst2);
