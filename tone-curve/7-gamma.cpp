@@ -6,7 +6,7 @@ using namespace std;
 using namespace cv;
 
 //ヒストグラム表示の関数
-void drawHistogram(const Mat& image, const string& windowName) {
+void drawHistogram(const Mat& image, const string& windowName, const string& histogramName) {
     // ヒストグラム表示用の画像オブジェクトの宣言、初期化
     Mat img_hst = Mat::zeros(100, 256, CV_8UC1);
 
@@ -23,7 +23,6 @@ void drawHistogram(const Mat& image, const string& windowName) {
     normalize(hist, hist, 0, img_hst.rows, NORM_MINMAX, -1, Mat());
 
     //変数ｖに正規化された度数分布i番目の度数をfloatからintへ変換して格納する。line関数で変数img_hstに線を描画する。
-    //その時、任意の始点座標から終点座標まで指定した色で線を描画するが、それにPoint(),Scalar()を使う、y座標の向きと終点座標の式に注意
     for (int i = 0; i <= 255; i++) {
         int v = saturate_cast<int>(hist.at<float>(i));
         line(img_hst, Point(i, img_hst.rows), Point(i, img_hst.rows - v), Scalar(255, 255, 255));
@@ -31,7 +30,11 @@ void drawHistogram(const Mat& image, const string& windowName) {
 
     //画像の表示
     imshow(windowName, img_hst);
+
+    // ヒストグラムの保存
+    imwrite(histogramName, img_hst);
 }
+
 int main() {
     //ウィンドウ名の宣言
     string win_src = "src";
@@ -39,23 +42,22 @@ int main() {
     string win_dst2 = "dst2";
     string win_dst3 = "dst3";
     string win_dst4 = "dst4";
-    
+
     //入力画像のpathの格納
-    string file_src = "C:\\Users\\caffeine111\\Documents\\Falcon.jpg";
-    //string file_dst = "C:\\Users\\caffeine111\\Documents\\Falconikichi2.jpg";
-    
+    string file_src = "入力画像path";
+
     //入力画像オブジェクトの宣言と読み込み
     Mat img_src = imread(file_src, 0);
 
     //出力画像オブジェクトの宣言
-    Mat img_dst1, img_dst2 ,img_dst3, img_dst4;
-    
+    Mat img_dst1, img_dst2, img_dst3, img_dst4;
+
     //入力画像の読み込みの確認
     if (!img_src.data) {
         cout << "error" << endl;
         return -1;
     }
-    
+
     //ガンマ変換の処理
     double gamma[] = { 3.0, 2.0, 0.5, 0.33 };
     Mat lut[4] = {
@@ -69,19 +71,19 @@ int main() {
             lut[j].data[i] = (unsigned char)(255.0 * pow(i / 255.0, 1.0 / gamma[j]));
         }
     }
-    
+
     LUT(img_src, lut[0], img_dst1);
     LUT(img_src, lut[1], img_dst2);
     LUT(img_src, lut[2], img_dst3);
     LUT(img_src, lut[3], img_dst4);
-    
+
     //ウィンドウの生成
     namedWindow(win_src, WINDOW_AUTOSIZE);
     namedWindow(win_dst1, WINDOW_AUTOSIZE);
     namedWindow(win_dst2, WINDOW_AUTOSIZE);
     namedWindow(win_dst3, WINDOW_AUTOSIZE);
     namedWindow(win_dst4, WINDOW_AUTOSIZE);
-    
+
     //画像の表示
     imshow(win_src, img_src);
     imshow(win_dst1, img_dst1);
@@ -90,14 +92,23 @@ int main() {
     imshow(win_dst4, img_dst4);
 
     // ヒストグラムの表示
-    drawHistogram(img_src, "Hist src");
-    drawHistogram(img_dst1, "Hist dst1");
-    drawHistogram(img_dst2, "Hist dst2");
-    drawHistogram(img_dst3, "Hist dst3");
-    drawHistogram(img_dst4, "Hist dst4");
+    drawHistogram(img_src, "Hst-src", "出力画像path1");
+    drawHistogram(img_dst1, "Hst-dst1", "出力画像path2");
+    drawHistogram(img_dst2, "Hst-dst2", "出力画像path3");
+    drawHistogram(img_dst3, "Hst-dst3", "出力画像path4");
+    drawHistogram(img_dst4, "Hst-dst4", "出力画像path5");
 
-    //imwrite(file_dst, img_dst);
+    imwrite("出力画像path6", img_src);
+    imwrite("出力画像path7", img_dst1);
+    imwrite("出力画像path8", img_dst2);
+    imwrite("出力画像path9", img_dst3);
+    imwrite("出力画像path10", img_dst4);
 
     waitKey(0);
     return 0;
 }
+
+/*
+後ほど
+
+*/

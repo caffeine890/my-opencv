@@ -36,7 +36,7 @@ int main() {
     namedWindow(win_dst4, WINDOW_AUTOSIZE);
     namedWindow(win_dst5, WINDOW_AUTOSIZE);
 
-    //RGB値の処理
+    //RGB値の処理※
     vector<Mat> img_bgr(3);
     split(img_src, img_bgr);
     merge(vector<Mat>{img_bgr[0], img_bgr[2], img_bgr[1]}, img_dst1);
@@ -65,7 +65,8 @@ int main() {
 }
 /*
 
-RGB値の総入れ替えの方法
+RGB値の総入れ替えの方法※
+
 1.vector<Mat>型を用いて、3要素を持つ画像オブジェクトimg_bgrを宣言する
 2.split関数を用いて、マルチチャンネルの入力画像をシングルチャンネルに分割して、それぞれをimg_bgrに格納する
 3.merge関数を用いて、img_bgrの要素を任意の並びを作り、出力画像を指定する

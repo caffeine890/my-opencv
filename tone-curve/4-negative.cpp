@@ -5,7 +5,7 @@
 using namespace std;
 using namespace cv;
 //ヒストグラム表示の関数
-void drawHistogram(const Mat& image, const string& windowName) {
+void drawHistogram(const Mat& image, const string& windowName, const string& histogramName) {
     // ヒストグラム表示用の画像オブジェクトの宣言、初期化
     Mat img_hst = Mat::zeros(100, 256, CV_8UC1);
 
@@ -21,8 +21,7 @@ void drawHistogram(const Mat& image, const string& windowName) {
     // ヒストグラムの正規化,度数分布を0-img_hst.rowsの間で正規化してhistに格納する
     normalize(hist, hist, 0, img_hst.rows, NORM_MINMAX, -1, Mat());
 
-    //変数ｖに正規化された度数分布i番目の度数をfloatからintへ変換して格納する。line関数で変数img_hstに線を描画する。
-    //その時、任意の始点座標から終点座標まで指定した色で線を描画するが、それにPoint(),Scalar()を使う、y座標の向きと終点座標の式に注意
+    //変数ｖに正規化された度数分布i番目の度数をfloatからintへ変換して格納する。line関数で変数img_hstに線を描画する
     for (int i = 0; i <= 255; i++) {
         int v = saturate_cast<int>(hist.at<float>(i));
         line(img_hst, Point(i, img_hst.rows), Point(i, img_hst.rows - v), Scalar(255, 255, 255));
@@ -30,6 +29,9 @@ void drawHistogram(const Mat& image, const string& windowName) {
 
     //画像の表示
     imshow(windowName, img_hst);
+
+    // ヒストグラムの保存
+    imwrite(histogramName, img_hst);
 }
 
 int main() {
@@ -38,8 +40,7 @@ int main() {
     string win_dst1 = "dst1";
 
     // 入力画像のpathの格納
-    string file_src = "C:\\Users\\caffeine111\\Documents\\Falcon.jpg";
-    string file_dst = "C:\\Users\\caffeine111\\Documents\\Falconikichi2.jpg";
+    string file_src = "入力画像path";
 
     //入力画像オブジェクトの宣言と読み込み
     Mat img_src = imread(file_src, 0);
@@ -53,23 +54,33 @@ int main() {
         return -1;
     }
 
-    //ネガポジ変換の処理
+    //ネガポジ変換の処理※
     img_src.convertTo(img_dst1, img_src.type(), -1, 255);
 
     //ウィンドウの生成
     namedWindow(win_src, WINDOW_AUTOSIZE);
     namedWindow(win_dst1, WINDOW_AUTOSIZE);
-    
+
     //画像の表示
     imshow(win_src, img_src);
     imshow(win_dst1, img_dst1);
 
     // ヒストグラムの表示
-    drawHistogram(img_src, "Histogram - src");
-    drawHistogram(img_dst1, "Histogram - dst1");
+    drawHistogram(img_src, "Hst-src", "出力画像path1");
+    drawHistogram(img_dst1, "Hst-dst1", "出力画像path2");
 
-    //imwrite(file_dst, img_dst);
+    imwrite("出力画像path3", img_src);
+    imwrite("出力画像path4", img_dst1);
 
     waitKey(0);
     return 0;
 }
+
+/*
+
+ネガポジ変換の処理※
+
+convertTo()を用いて、ネガポジを反転させる。第一引数に出力画像、第二引数にデータ型、第三引数にスケーリング係数α、第四引数にスケーリング後に
+加算される値βを入れる。ここでは、-1を掛けた後255を足すことで画素値を反転させる。
+
+*/
