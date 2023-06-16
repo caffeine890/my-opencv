@@ -63,7 +63,9 @@ int main() {
     //imshow(win_dst3, img_dst3);
     //imshow(win_dst4, img_dst4);
     
-    //imwrite(file_dst, img_dst);// 処理結果の保存
+    //画像の保存
+    imwrite("C:\\Users\\caffeine111\\Desktop\\Mats\\Geometric transformation\\3-1.jpg", img_src);
+    imwrite("C:\\Users\\caffeine111\\Desktop\\Mats\\Geometric transformation\\3-2.jpg", img_dst1);
 
     waitKey(0);
     return 0;
