@@ -10,8 +10,8 @@ int main() {
     string win_src = "src";
     string win_dst1 = "dst1";
     string win_dst2 = "dst2";
-    //string win_dst3 = "dst3";
-    //string win_dst4 = "dst4";
+    string win_dst3 = "dst3";
+    string win_dst4 = "dst4";
 
     // 入力画像のpathの格納
     string file_src = "C:\\Users\\caffeine111\\Documents\\Falconikichi.jpg";
@@ -20,7 +20,7 @@ int main() {
     Mat img_src = imread(file_src, 0);
 
     //出力画像オブジェクトの宣言
-    Mat img_dst1;// , img_dst2;// , img_dst3, img_dst4;
+    Mat img_dst1,img_dst2 , img_dst3, img_dst4;
 
     //入力画像の読み込みの確認
     if (!img_src.data) {
@@ -29,28 +29,37 @@ int main() {
     }
 
     // ここに核となる処理を記述する (例）flip(img_src, img_dst, 0); //垂直回転
-    Mat img_lab;
-    int nlabel = connectedComponents(img_src, img_lab);
-    compare(img_lab, 1, img_dst1, CMP_EQ);
+    Mat img_lab1;
+    int nlabel1 = connectedComponents(img_src, img_lab1);
+    compare(img_lab1, 1, img_dst1, CMP_EQ);
+
+    Mat img_lab2;
+    int nlabel = connectedComponents(img_src, img_lab2);
+    compare(img_lab2, 1, img_dst2, CMP_EQ);
+
+    Mat img_lab3;
+    int nlabel3 = connectedComponents(img_src, img_lab3);
+    compare(img_lab3, 1, img_dst3, CMP_EQ);
+
+
 
     // ウィンドウの生成
     namedWindow(win_src, WINDOW_AUTOSIZE);
     namedWindow(win_dst1, WINDOW_AUTOSIZE);
-    //namedWindow(win_dst2, WINDOW_AUTOSIZE);
-    //namedWindow(win_dst3, WINDOW_AUTOSIZE);
-    //namedWindow(win_dst4, WINDOW_AUTOSIZE);
+    namedWindow(win_dst2, WINDOW_AUTOSIZE);
+    namedWindow(win_dst3, WINDOW_AUTOSIZE);
 
     //画像の表示
     imshow(win_src, img_src);
     imshow(win_dst1, img_dst1);
-    //imshow(win_dst2, img_dst2);
-    //imshow(win_dst3, img_dst3);
-    //imshow(win_dst4, img_dst4);
+    imshow(win_dst2, img_dst2);
+    imshow(win_dst3, img_dst3);
 
     ///画像の保存
     imwrite("C:\\Users\\caffeine111\\Desktop\\Mats\\binary-image\\5-1.jpg", img_src);
     imwrite("C:\\Users\\caffeine111\\Desktop\\Mats\\binary-image\\5-2.jpg", img_dst1);
-    //imwrite("C:\\Users\\caffeine111\\Desktop\\Mats\\binary-image\\5-3.jpg", img_dst2);
+    imwrite("C:\\Users\\caffeine111\\Desktop\\Mats\\binary-image\\5-3.jpg", img_dst2);
+    imwrite("C:\\Users\\caffeine111\\Desktop\\Mats\\binary-image\\5-4.jpg", img_dst3);
 
     waitKey(0);
     return 0;
