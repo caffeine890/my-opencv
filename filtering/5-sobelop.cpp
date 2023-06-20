@@ -1,4 +1,4 @@
-#include<iostream>
+#include<iostream>//ひな形コード第一完成版
 #include<cmath>
 #include<opencv2/opencv.hpp>
 using namespace std;
@@ -16,7 +16,7 @@ int main() {
     string file_src = "C:\\Users\\caffeine111\\Documents\\Falcon.jpg";
 
     //入力画像オブジェクトの宣言と読み込み
-    Mat img_src = imread(file_src, 1);
+    Mat img_src = imread(file_src, 0);
 
     //出力画像オブジェクトの宣言
     Mat img_dst1, img_dst2, img_dst3, img_dst4;
@@ -28,10 +28,21 @@ int main() {
     }
 
     // ここに核となる処理を記述する (例）flip(img_src, img_dst, 0); //垂直回転
-    medianBlur(img_src, img_dst1, 5);
-    medianBlur(img_src, img_dst2, 7);
-    medianBlur(img_src, img_dst3, 9);
-    medianBlur(img_src, img_dst4, 11);
+    Mat img_tmp1;
+    Sobel(img_src, img_tmp1, CV_32F, 1, 0, 3);
+    convertScaleAbs(img_tmp1, img_dst1, 1, 0);
+
+    Mat img_tmp2;
+    Sobel(img_src, img_tmp2, CV_32F, 0, 1, 3);
+    convertScaleAbs(img_tmp2, img_dst2, 1, 0);
+
+    Mat img_tmp3;
+    Sobel(img_src, img_tmp3, CV_32F, 1, 0, 5);
+    convertScaleAbs(img_tmp3, img_dst3, 1, 0);
+
+    Mat img_tmp4;
+    Sobel(img_src, img_tmp4, CV_32F, 0, 1, 5);
+    convertScaleAbs(img_tmp4, img_dst4, 1, 0);
 
     // ウィンドウの生成
     namedWindow(win_src, WINDOW_AUTOSIZE);
@@ -47,13 +58,15 @@ int main() {
     imshow(win_dst3, img_dst3);
     imshow(win_dst4, img_dst4);
 
-    //画像の保存
-    imwrite("C:\\Users\\caffeine111\\Desktop\\Mats\\filtering\\4-1.jpg", img_src);
-    imwrite("C:\\Users\\caffeine111\\Desktop\\Mats\\filtering\\4-2.jpg", img_dst1);
-    imwrite("C:\\Users\\caffeine111\\Desktop\\Mats\\filtering\\4-3.jpg", img_dst2);
-    imwrite("C:\\Users\\caffeine111\\Desktop\\Mats\\filtering\\4-4.jpg", img_dst3);
-    imwrite("C:\\Users\\caffeine111\\Desktop\\Mats\\filtering\\4-5.jpg", img_dst4);
+
+    imwrite("C:\\Users\\caffeine111\\Desktop\\Mats\\filtering\\5-1.jpg", img_src);
+    imwrite("C:\\Users\\caffeine111\\Desktop\\Mats\\filtering\\5-2.jpg", img_dst1);
+    imwrite("C:\\Users\\caffeine111\\Desktop\\Mats\\filtering\\5-3.jpg", img_dst2);
+    imwrite("C:\\Users\\caffeine111\\Desktop\\Mats\\filtering\\5-4.jpg", img_dst3);
+    imwrite("C:\\Users\\caffeine111\\Desktop\\Mats\\filtering\\5-5.jpg", img_dst4);
 
     waitKey(0);
     return 0;
+}
+
 }

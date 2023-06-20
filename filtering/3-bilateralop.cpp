@@ -28,10 +28,10 @@ int main() {
     }
         
     // ここに核となる処理を記述する (例）flip(img_src, img_dst, 0); //垂直回転
-    bilateralFilter(img_src, img_dst1, 11,50, 100);
-    bilateralFilter(img_src, img_dst2, 11, 10, 20);
-    bilateralFilter(img_src, img_dst3, 5, 50, 100);
-    bilateralFilter(img_src, img_dst4, 5, 10, 20);
+    bilateralFilter(img_src, img_dst1, 3,50, 100);
+    bilateralFilter(img_src, img_dst2, 3, 10, 20);
+    bilateralFilter(img_src, img_dst3, 11, 50, 100);
+    bilateralFilter(img_src, img_dst4, 11, 10, 20);
 
     // ウィンドウの生成
     namedWindow(win_src, WINDOW_AUTOSIZE);

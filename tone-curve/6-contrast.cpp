@@ -59,7 +59,7 @@ int main() {
         return -1;
     }
 
-    //コントラスト調整の処理※
+    //コントラスト調整の処理
     int min1 = 50, max1 = 250, min2 = 100, max2 = 200;
 
     img_src.convertTo(img_dst1, img_src.type(), (max1 - min1) / 255.0, min1);
@@ -101,12 +101,3 @@ int main() {
     return 0;
 }
 
-/*
-
-コントラスト調整の処理※
-
-convertTo()を用いて、コントラストを調整する。また後程。
-
-
-
-*/

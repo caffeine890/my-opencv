@@ -25,7 +25,7 @@ int main() {
     namedWindow(win_src, WINDOW_AUTOSIZE);
     namedWindow(win_hst, WINDOW_AUTOSIZE);
 
-    //ヒストグラム表示の処理　※
+    //ヒストグラム表示の処理　
     Mat img_hst = Mat::zeros(100, 256, CV_8UC1);
 
     const int hdims[] = { 256 };
@@ -43,7 +43,6 @@ int main() {
     }
 
 
-
     //画像の表示
     imshow(win_src, img_src);
     imshow(win_hst, img_hst);
@@ -55,13 +54,3 @@ int main() {
     return 0;
 }
 
-/*
-
-ヒストグラム表示の処理※
-
-ヒストグラムの表示用の画像を100*256に指定する。
-calcHist()を用いて、hstに度数を格納。その際に、度数分布のビン数と最大値・最小値を変数宣言しておく。
-normalize()を用いて、度数分布histの値を0-img_hst.rows(100)の間で正規化する。 
-度数分布histの値をfloat型からint型に変え、line()を用いて白色で度数を描画する。これをすべてのⅹ座標で繰り返すためにfor文を使用する。
-
-*/

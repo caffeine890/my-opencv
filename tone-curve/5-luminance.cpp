@@ -58,7 +58,7 @@ int main() {
         return -1;
     }
 
-    //明度調整の処理※
+    //明度調整の処理
     img_src.convertTo(img_dst1, img_src.type(), 1, 100);
     img_src.convertTo(img_dst2, img_src.type(), 1, 50);
     img_src.convertTo(img_dst3, img_src.type(), 1, -50);
@@ -95,9 +95,3 @@ int main() {
     return 0;
 }
 
-/*
-明度調整の処理※
-
-convertTo()を用いて、明度を調整する。1を掛けて、βの部分を足し引きすることで調整できる。
-
-*/
