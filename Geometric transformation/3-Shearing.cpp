@@ -29,8 +29,7 @@ int main() {
     }
 
     // ここに核となる処理を記述する (例）flip(img_src, img_dst, 0); //垂直回転
-    const Mat affine_matrix1 = (Mat_<double>(2, 3) << 1, tan(M_PI / 4.0), 0,
-        0, 1, 0);
+    const Mat affine_matrix1 = (Mat_<double>(2, 3) << 1, tan(M_PI / 4.0), 0, 0, 1, 0);
     const Mat affine_matrix2 = (Mat_<double>(2, 3) << 1, 0, 0, tan(M_PI / 4.0), 1, 0);
     warpAffine(img_src, img_dst1, affine_matrix1, img_src.size(), INTER_CUBIC);
     warpAffine(img_src, img_dst2, affine_matrix2, img_src.size(), INTER_CUBIC);
@@ -59,8 +58,8 @@ int main() {
     //画像の保存
     imwrite("C:\\Users\\caffeine111\\Desktop\\Mats\\Geometric transformation\\3-1.jpg", img_src);
     imwrite("C:\\Users\\caffeine111\\Desktop\\Mats\\Geometric transformation\\3-2.jpg", img_dst1);
+    imwrite("C:\\Users\\caffeine111\\Desktop\\Mats\\Geometric transformation\\3-3.jpg", img_dst2);
 
     waitKey(0);
     return 0;
 }
-
