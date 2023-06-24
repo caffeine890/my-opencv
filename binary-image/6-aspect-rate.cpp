@@ -11,7 +11,7 @@ int main() {
     string win_dst1 = "dst1";
 
     // 入力画像のpathの格納
-    string file_src = "C:\\Users\\caffeine111\\Documents\\Falconikichi.jpg";
+    string file_src = "入力画像path";
 
     //入力画像オブジェクトの宣言と読み込み
     Mat img_src = imread(file_src, 0);
@@ -39,9 +39,9 @@ int main() {
     imshow(win_src, img_src);
     imshow(win_dst1, img_dst1);
 
-    ///画像の保存
-    imwrite("C:\\Users\\caffeine111\\Desktop\\Mats\\binary-image\\6-1.jpg", img_src);
-    imwrite("C:\\Users\\caffeine111\\Desktop\\Mats\\binary-image\\6-2.jpg", img_dst1);
+    //画像の保存
+    imwrite("出力画像path1", img_src);
+    imwrite("出力画像path2", img_dst1);
 
     waitKey(0);
     return 0;

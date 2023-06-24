@@ -13,7 +13,7 @@ int main() {
     string win_dst4 = "dst4";
 
     // 入力画像のpathの格納
-    string file_src = "C:\\Users\\caffeine111\\Documents\\Falcon.jpg";
+    string file_src = "入力画像path";
     
     //入力画像オブジェクトの宣言と読み込み
     Mat img_src = imread(file_src, 1);
@@ -28,7 +28,7 @@ int main() {
     }
 
 
-    // ここに核となる処理を記述する (例）flip(img_src, img_dst, 0); //垂直回転
+    //ガウシアンオペレータ平滑化フィルタ処理
     GaussianBlur(img_src, img_dst1, Size(3,3), 1);
     GaussianBlur(img_src, img_dst2, Size(3,3), 120);
     GaussianBlur(img_src, img_dst3, Size(11,11), 1);
@@ -49,11 +49,11 @@ int main() {
     imshow(win_dst4, img_dst4);
     
     //画像の保存
-    imwrite("C:\\Users\\caffeine111\\Desktop\\Mats\\filtering\\2-1.jpg", img_src);
-    imwrite("C:\\Users\\caffeine111\\Desktop\\Mats\\filtering\\2-2.jpg", img_dst1);
-    imwrite("C:\\Users\\caffeine111\\Desktop\\Mats\\filtering\\2-3.jpg", img_dst2);
-    imwrite("C:\\Users\\caffeine111\\Desktop\\Mats\\filtering\\2-4.jpg", img_dst3);
-    imwrite("C:\\Users\\caffeine111\\Desktop\\Mats\\filtering\\2-5.jpg", img_dst4);
+    imwrite("出力画像path1", img_src);
+    imwrite("出力画像path2", img_dst1);
+    imwrite("出力画像path3", img_dst2);
+    imwrite("出力画像path4", img_dst3);
+    imwrite("出力画像path5", img_dst4);
 
     waitKey(0);
     return 0;

@@ -43,7 +43,7 @@ int main() {
     string win_dst4 = "dst4";
 
     // 入力画像のpathの格納
-    string file_src = "C:\\Users\\caffeine111\\Documents\\Falcon.jpg";
+    string file_src = "入力画像path";
 
     //入力画像オブジェクトの宣言と読み込み
     Mat img_src = imread(file_src, 0);
@@ -79,18 +79,18 @@ int main() {
     imshow(win_dst4, img_dst4);
 
     // ヒストグラムの表示
-    drawHistogram(img_src, "Hist-src", "C:\\Users\\caffeine111\\Desktop\\Mats\\binary-image\\1-1.jpg");
-    drawHistogram(img_dst1, "Hist-dst1", "C:\\Users\\caffeine111\\Desktop\\Mats\\binary-image\\1-2.jpg");
-    drawHistogram(img_dst2, "Hist-dst2", "C:\\Users\\caffeine111\\Desktop\\Mats\\binary-image\\1-3.jpg");
-    drawHistogram(img_dst3, "Hist-dst3", "C:\\Users\\caffeine111\\Desktop\\Mats\\binary-image\\1-4.jpg");
-    drawHistogram(img_dst4, "Hist-dst4", "C:\\Users\\caffeine111\\Desktop\\Mats\\binary-image\\1-5.jpg");
+    drawHistogram(img_src, "Hist-src", "出力画像path1");
+    drawHistogram(img_dst1, "Hist-dst1", "出力画像path2");
+    drawHistogram(img_dst2, "Hist-dst2", "出力画像path3");
+    drawHistogram(img_dst3, "Hist-dst3", "出力画像path4");
+    drawHistogram(img_dst4, "Hist-dst4", "出力画像path5");
 
     //画像の保存
-    imwrite("C:\\Users\\caffeine111\\Desktop\\Mats\\binary-image\\1-6.jpg", img_src);
-    imwrite("C:\\Users\\caffeine111\\Desktop\\Mats\\binary-image\\1-7.jpg", img_dst1);
-    imwrite("C:\\Users\\caffeine111\\Desktop\\Mats\\binary-image\\1-8.jpg", img_dst2);
-    imwrite("C:\\Users\\caffeine111\\Desktop\\Mats\\binary-image\\1-9.jpg", img_dst2);
-    imwrite("C:\\Users\\caffeine111\\Desktop\\Mats\\binary-image\\1-10.jpg", img_dst2);
+    imwrite("出力画像path6", img_src);
+    imwrite("出力画像path7", img_dst1);
+    imwrite("出力画像path8", img_dst2);
+    imwrite("出力画像path9", img_dst3);
+    imwrite("出力画像path10", img_dst4);
 
     waitKey(0);
     return 0;

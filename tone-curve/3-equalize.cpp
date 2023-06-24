@@ -44,7 +44,6 @@ int main() {
 
     // 入力画像のpathの格納
     string file_src = "入力画像path";
-    //string file_dst = "C:\\Users\\caffeine111\\Documents\\Falconikichi2.jpg";
 
     //入力画像オブジェクトの宣言と読み込み
     Mat img_src = imread(file_src, 0);

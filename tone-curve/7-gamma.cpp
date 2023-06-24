@@ -97,7 +97,9 @@ int main() {
     drawHistogram(img_dst2, "Hst-dst2", "出力画像path3");
     drawHistogram(img_dst3, "Hst-dst3", "出力画像path4");
     drawHistogram(img_dst4, "Hst-dst4", "出力画像path5");
+    
 
+    //画像の保存
     imwrite("出力画像path6", img_src);
     imwrite("出力画像path7", img_dst1);
     imwrite("出力画像path8", img_dst2);

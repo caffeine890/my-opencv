@@ -14,7 +14,7 @@ int main() {
     string win_dst4 = "dst4";
 
     // 入力画像のpathの格納
-    string file_src = "C:\\Users\\caffeine111\\Documents\\Falconikichi.jpg";
+    string file_src = "入力画像path";
 
     //入力画像オブジェクトの宣言と読み込み
     Mat img_src = imread(file_src, 0);
@@ -28,7 +28,7 @@ int main() {
         return -1;
     }
 
-    // ここに核となる処理を記述する (例）flip(img_src, img_dst, 0); //垂直回転
+    // ラベリング処理
     Mat img_lab1;
     int nlabel1 = connectedComponents(img_src, img_lab1);
     compare(img_lab1, 1, img_dst1, CMP_EQ);
@@ -55,11 +55,11 @@ int main() {
     imshow(win_dst2, img_dst2);
     imshow(win_dst3, img_dst3);
 
-    ///画像の保存
-    imwrite("C:\\Users\\caffeine111\\Desktop\\Mats\\binary-image\\5-1.jpg", img_src);
-    imwrite("C:\\Users\\caffeine111\\Desktop\\Mats\\binary-image\\5-2.jpg", img_dst1);
-    imwrite("C:\\Users\\caffeine111\\Desktop\\Mats\\binary-image\\5-3.jpg", img_dst2);
-    imwrite("C:\\Users\\caffeine111\\Desktop\\Mats\\binary-image\\5-4.jpg", img_dst3);
+    //画像の保存
+    imwrite("出力画像path1", img_src);
+    imwrite("出力画像path2", img_dst1);
+    imwrite("出力画像path3", img_dst2);
+    imwrite("出力画像path4", img_dst3);
 
     waitKey(0);
     return 0;

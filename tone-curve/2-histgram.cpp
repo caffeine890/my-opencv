@@ -46,7 +46,8 @@ int main() {
     //画像の表示
     imshow(win_src, img_src);
     imshow(win_hst, img_hst);
-
+    
+    //画像の保存
     imwrite("出力画像path1", img_src);
     imwrite("出力画像path2", img_hst);
 
