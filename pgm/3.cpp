@@ -2,7 +2,7 @@
 #include <fstream>
 
 int main() {
-    std::ofstream outputFile("C:\\Users\\caffeine111\\Desktop\\Pgm1\\pgm3.txt"); 
+    std::ofstream outputFile("出力ファイルpath"); 
 
     if (outputFile.is_open()) { 
         for (int i = 1; i <= 256; i++) {
