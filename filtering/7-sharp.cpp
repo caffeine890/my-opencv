@@ -38,24 +38,24 @@ int main() {
 
 
     Mat img_tmp2;
-    float k2 = 1.0;
-    Mat op2 = Mat::ones(5, 5, CV_32F) * -k2;
+    float k2 = 3.0;
+    Mat op2 = Mat::ones(3, 3, CV_32F) * -k2;
     op2.at<float>(1, 1) = 1 + 8 * k2;
     filter2D(img_src, img_tmp2, CV_32F, op2);
     convertScaleAbs(img_tmp2, img_dst2, 1, 0);
 
 
     Mat img_tmp3;
-    float k3 = 1.0;
-    Mat op3 = Mat::ones(7, 7, CV_32F) * -k3;
+    float k3 = 5.0;
+    Mat op3 = Mat::ones(3, 3, CV_32F) * -k3;
     op3.at<float>(1, 1) = 1 + 8 * k3;
     filter2D(img_src, img_tmp3, CV_32F, op3);
     convertScaleAbs(img_tmp3, img_dst3, 1, 0);
 
 
     Mat img_tmp4;
-    float k4 = 1.0;
-    Mat op4 = Mat::ones(9, 9, CV_32F) * -k4;
+    float k4 = 7.0;
+    Mat op4 = Mat::ones(3, 3, CV_32F) * -k4;
     op4.at<float>(1, 1) = 1 + 8 * k4;
     filter2D(img_src, img_tmp4, CV_32F, op4);
     convertScaleAbs(img_tmp4, img_dst4, 1, 0);

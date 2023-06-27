@@ -34,7 +34,7 @@ int main() {
     compare(img_lab1, 1, img_dst1, CMP_EQ);
 
     Mat img_lab2;
-    int nlabel = connectedComponents(img_src, img_lab2);
+    int nlabel2 = connectedComponents(img_src, img_lab2);
     compare(img_lab2, 1, img_dst2, CMP_EQ);
 
     Mat img_lab3;

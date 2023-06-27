@@ -23,7 +23,7 @@ int main() {
     }
 
     //マスク処理
-    string file_msk = "C:\\Users\\caffeine111\\Documents\\Falconkakou2.jpg";
+    string file_msk = "出力画像path2";
     Mat img_msk = imread(file_msk, 0);
     img_src.copyTo(img_dst1, img_msk);
 

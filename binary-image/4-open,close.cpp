@@ -29,7 +29,7 @@ int main() {
 
     //オープン、クローズ処理
     Mat img_tmp;
-    //Mat element4 = (Mat_<uchar>(3, 3) << 0, 1, 0, 1, 1, 1, 0, 1, 0); //4近傍
+
     Mat element8 = (Mat_<uchar>(3, 3) << 1, 1, 1, 1, 1, 1, 1, 1, 1); //8近傍
     morphologyEx(img_src, img_dst1, MORPH_OPEN, element8, Point(-1, -1), 5);
     morphologyEx(img_src, img_dst2, MORPH_OPEN, element8, Point(-1, -1), 10);
